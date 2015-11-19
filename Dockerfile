@@ -19,20 +19,15 @@ RUN apt-get clean
 
 RUN mkdir /var/run/sshd
 
-RUN useradd -m -g nogroup sshrw
-RUN useradd -m -g nogroup sshro
-RUN sudo -u sshrw mkdir /home/sshrw/.ssh
-RUN sudo -u sshro mkdir /home/sshro/.ssh
-COPY authorized_keys2 /home/sshrw/.ssh/
-COPY authorized_keys2 /home/sshro/.ssh/
-RUN chown -R sshrw:nogroup /home/sshrw/.ssh
-RUN chown -R sshro:nogroup /home/sshro/.ssh
-RUN sudo -u sshrw chmod -R 700 /home/sshrw/.ssh
-RUN sudo -u sshro chmod -R 700 /home/sshro/.ssh
+RUN useradd -m -g nogroup depot
+RUN sudo -u depot mkdir /home/depot/.ssh
+COPY authorized_keys2 /home/depot/.ssh/
+RUN chown -R depot:nogroup /home/depot/.ssh
+RUN sudo -u depot chmod -R 700 /home/depot/.ssh
 
-RUN mkdir -p /icecastwebdirectory
-RUN chown sshrw /icecastwebdirectory
-RUN chmod 705 /icecastwebdirectory
+RUN mkdir -p /depot
+RUN chown depot /depot
+RUN chmod 700 /depot
 
 COPY entrypoint.sh /entrypoint.sh
 
