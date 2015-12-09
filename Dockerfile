@@ -25,9 +25,9 @@ COPY authorized_keys2 /home/depot/.ssh/
 RUN chown -R depot:nogroup /home/depot/.ssh
 RUN sudo -u depot chmod -R 700 /home/depot/.ssh
 
-RUN mkdir -p /depot
-RUN chown depot /depot
-RUN chmod 700 /depot
+#RUN mkdir -p /depot
+#RUN chown depot /depot
+#RUN chmod 700 /depot
 
 COPY entrypoint.sh /entrypoint.sh
 
