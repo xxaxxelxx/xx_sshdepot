@@ -7,6 +7,7 @@ if [ $? -ne 0 ]; then
 fi
 chown depot /depot
 chmod 700 /depot
+chmod -R 777 /customer
 
 /usr/sbin/sshd -D
 #bash
